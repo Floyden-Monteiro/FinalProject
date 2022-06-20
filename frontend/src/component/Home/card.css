@@ -1,0 +1,35 @@
+
+.container1{
+    background: white;
+    cursor: pointer;
+    border-radius: 15px;
+    position: relative;
+    padding: 25px 30px;
+ 
+    color: black;
+    margin: 10px;
+    font-family: 'Nunito Sans', sans-serif;
+}
+.container1::after{
+    content: '';
+    background: #ea1d6f;
+    border-radius: 15px;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;top: 0;
+    z-index: 0;
+    clip-path: circle(10% at 0% 0%);
+    transition: all .3s ease-in;
+}
+.content{
+    position: relative;
+    z-index: 1;
+    transition: all .3s ease-in;
+}
+.container1:hover::after{
+    clip-path: circle(100%);
+}
+.container1:hover .content{
+    color: white;
+}
