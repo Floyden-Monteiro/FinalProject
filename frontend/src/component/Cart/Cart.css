@@ -104,7 +104,7 @@
     margin: 1vmax 4vmax;
     box-sizing: border-box;
     padding: 2vmax 0;
-    font: 300 1vmax "Roboto";
+    font: 300 1vmax "arial";
     display: flex;
     justify-content: space-between;
   }
@@ -118,9 +118,10 @@
     color: white;
     border: none;
     padding: 0.8vmax 4vmax;
+
     width: 50%;
     font: 300 0.8vmax "Roboto";
-    margin: 1vmax 4vmax;
+    margin: 1vmax 10vmax;
     cursor: pointer;
     border-radius: 30px;
   }

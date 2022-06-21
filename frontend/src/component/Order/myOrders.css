@@ -1,7 +1,7 @@
 .myOrdersPage {
-  width: 100vw;
+  width: 100%;
   max-width: 100%;
-  padding: 0 7vmax;
+  /* padding: 0 7vmax; */
   box-sizing: border-box;
   background-color: rgb(235, 235, 235);
   position: fixed;
@@ -23,7 +23,8 @@
 }
 
 .myOrdersTable {
-  background-color: white;
+  background-color: #f1f1;
+  margin: 10px;
 }
 
 .myOrdersTable div {
@@ -38,11 +39,11 @@
 }
 
 .myOrdersTable a:hover {
-  color: tomato;
+  color: dodgerblue;
 }
 
 .MuiDataGrid-columnHeader {
-  background-color: tomato;
+  background-color: black;
   padding: 1vmax !important;
 }
 

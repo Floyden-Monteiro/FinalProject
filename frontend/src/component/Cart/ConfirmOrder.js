@@ -1,10 +1,10 @@
-import React, { Fragment } from "react";
-import CheckoutSteps from "../Cart/CheckoutSteps";
-import { useSelector } from "react-redux";
-import MetaData from "../layout/MetaData";
-import "./ConfirmOrder.css";
-import { Link } from "react-router-dom";
-import { Typography } from "@material-ui/core";
+import React, { Fragment } from 'react';
+import CheckoutSteps from '../Cart/CheckoutSteps';
+import { useSelector } from 'react-redux';
+import MetaData from '../layout/MetaData';
+import './ConfirmOrder.css';
+import { Link } from 'react-router-dom';
+import { Typography } from '@material-ui/core';
 
 const ConfirmOrder = ({ history }) => {
   const { shippingInfo, cartItems } = useSelector((state) => state.cart);
@@ -19,9 +19,9 @@ const ConfirmOrder = ({ history }) => {
 
   const tax = subtotal * 0.18;
 
-  const totalPrice = subtotal + tax + shippingCharges;
+  const totalPrice = subtotal + tax ;
 
-  const address = `${shippingInfo.address}, ${shippingInfo.city}, ${shippingInfo.state}, ${shippingInfo.pinCode}, ${shippingInfo.country}`;
+  const address = `${shippingInfo.address}, ${shippingInfo.pinCode}`;
 
   const proceedToPayment = () => {
     const data = {
@@ -31,20 +31,20 @@ const ConfirmOrder = ({ history }) => {
       totalPrice,
     };
 
-    sessionStorage.setItem("orderInfo", JSON.stringify(data));
+    sessionStorage.setItem('orderInfo', JSON.stringify(data));
 
-    history.push("/process/payment");
+    history.push('/process/payment');
   };
 
   return (
     <Fragment>
-      <MetaData title="Confirm Order" />
+      <MetaData title='Confirm Order' />
       <CheckoutSteps activeStep={1} />
-      <div className="confirmOrderPage">
+      <div className='confirmOrderPage'>
         <div>
-          <div className="confirmshippingArea">
+          <div className='confirmshippingArea'>
             <Typography>Shipping Info</Typography>
-            <div className="confirmshippingAreaBox">
+            <div className='confirmshippingAreaBox'>
               <div>
                 <p>Name:</p>
                 <span>{user.name}</span>
@@ -59,18 +59,18 @@ const ConfirmOrder = ({ history }) => {
               </div>
             </div>
           </div>
-          <div className="confirmCartItems">
+          <div className='confirmCartItems'>
             <Typography>Your Cart Items:</Typography>
-            <div className="confirmCartItemsContainer">
+            <div className='confirmCartItemsContainer'>
               {cartItems &&
                 cartItems.map((item) => (
                   <div key={item.product}>
-                    <img src={item.image} alt="Product" />
+                    <img src={item.image} alt='Product' />
                     <Link to={`/product/${item.product}`}>
                       {item.name}
-                    </Link>{" "}
+                    </Link>{' '}
                     <span>
-                      {item.quantity} X ₹{item.price} ={" "}
+                      {item.quantity} X ₹{item.price} ={' '}
                       <b>₹{item.price * item.quantity}</b>
                     </span>
                   </div>
@@ -80,31 +80,44 @@ const ConfirmOrder = ({ history }) => {
         </div>
         {/*  */}
         <div>
-          <div className="orderSummary">
-            <Typography>Order Summery</Typography>
-            <div>
-              <div>
-                <p>Subtotal:</p>
-                <span>₹{subtotal}</span>
-              </div>
-              <div>
-                <p>Shipping Charges:</p>
-                <span>₹{shippingCharges}</span>
-              </div>
-              <div>
-                <p>GST:</p>
-                <span>₹{tax}</span>
+          <div className='orderSummary'>
+            <div class='row'>
+              <div class='col-md-4'>
+                <div class='pricing-table purple'>
+                  <div class='pricing-label'>Order Summery</div>
+
+                  <div class='pricing-features'>
+                    <div class='feature'>
+                      Subtotal :<span>{subtotal}</span>
+                    </div>
+                    <div class='feature'>
+                      GST :<span>{tax}</span>
+                    </div>
+                    <div class='feature'>
+                      Total:<span>₹{totalPrice}</span>
+                    </div>
+                  </div>
+
+                  <div class='price-tag'>
+                    {/* <span class='symbol'>$</span> */}
+                    <span class='amount'>₹{totalPrice}</span>
+                    {/* <span class='after'>/month</span> */}
+                  </div>
+                  <button
+                    class='price-button'
+                    style={{
+                      border: 'none',
+                      borderRadius: '20px',
+                      paddingLeft: '22px',
+                      paddingRight: '22px',
+                    }}
+                    onClick={proceedToPayment}
+                  >
+                    Proceed To Payment
+                  </button>
+                </div>
               </div>
             </div>
-
-            <div className="orderSummaryTotal">
-              <p>
-                <b>Total:</b>
-              </p>
-              <span>₹{totalPrice}</span>
-            </div>
-
-            <button onClick={proceedToPayment}>Proceed To Payment</button>
           </div>
         </div>
       </div>

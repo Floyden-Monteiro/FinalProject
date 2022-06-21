@@ -49,7 +49,7 @@ const Cart = ({ history }) => {
           <div className='cartPage'>
             <div className='cartHeader'>
               <p>Product</p>
-             
+
               <p>Remove</p>
               <p>Quantity</p>
               <p>Price</p>
@@ -69,7 +69,7 @@ const Cart = ({ history }) => {
                       -
                     </button>
                     <input type='number' value={item.quantity} readOnly />
-                    <h4 >{item.quantity} </h4>
+                    <h4>{item.quantity} </h4>
                     <button
                       className='btn btn-primary m-2'
                       onClick={() =>
@@ -83,7 +83,7 @@ const Cart = ({ history }) => {
                       +
                     </button>
                   </div>
-                  <p className='cartSubtotal'>{`₹${
+                  <p className='cartSubtotal fs-6 '>{`₹${
                     item.price * item.quantity
                   }`}</p>
                   <hr />
@@ -93,15 +93,17 @@ const Cart = ({ history }) => {
             <div className='cartGrossProfit'>
               <div></div>
               <div className='cartGrossProfitBox'>
-                <p>Gross Total</p>
-                <p>{`₹${cartItems.reduce(
+                <p className='fs-6 fw-bolder'>Total</p>
+                <p className='fs-6 fw-bolder'>{`₹${cartItems.reduce(
                   (acc, item) => acc + item.quantity * item.price,
                   0
                 )}`}</p>
               </div>
               <div></div>
               <div className='checkOutBtn'>
-                <button onClick={checkoutHandler}>Proceed Payment</button>
+                <button className='p-3' onClick={checkoutHandler}>
+                  Proceed Payment
+                </button>
               </div>
             </div>
           </div>
