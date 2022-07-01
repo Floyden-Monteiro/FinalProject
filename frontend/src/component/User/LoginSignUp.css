@@ -5,18 +5,22 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(231, 231, 231);
+  background-color: #f1f1;
   position: fixed;
   top: 0%;
   left: 0;
+  margin:50px;
 }
 
 .LoginSignUpBox {
   background-color: white;
-  width: 25vw;
-  height: 70vh;
+  width: 40vw;
+  height: 75vh;
   box-sizing: border-box;
   overflow: hidden;
+  padding: 10px;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5); 
+  border-radius: 20px;
 }
 .login_signUp_toggle {
   display: flex;
@@ -24,7 +28,7 @@
 }
 .login_signUp_toggle > p {
   color: rgba(0, 0, 0, 0.678);
-  font: 300 1vmax "Roboto";
+  font: 300 1vmax "Arial";
   transition: all 0.5s;
   cursor: pointer;
   display: grid;
@@ -32,11 +36,11 @@
   width: 100%;
 }
 .login_signUp_toggle > p:hover {
-  color: tomato;
+  color: dodgerblue;
 }
 
 .LoginSignUpBox > div > button {
-  background-color: tomato;
+  background-color: dodgerblue;
   height: 3px;
   width: 50%;
   border: none;
@@ -48,8 +52,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: auto;
-  padding: 2vmax;
+  margin-top: 12px;
+  padding: 6vmax;
   justify-content: space-evenly;
   height: 70%;
   transition: all 0.5s;
@@ -72,8 +76,8 @@
   width: 100%;
   box-sizing: border-box;
   border: 1px solid rgba(0, 0, 0, 0.267);
-  border-radius: 4px;
-  font: 300 0.9vmax cursive;
+  border-radius: 25px;
+  font: 300 0.9vmax;
   outline: none;
 }
 
@@ -127,7 +131,7 @@
 .loginBtn,
 .signUpBtn {
   border: none;
-  background-color: tomato;
+  background-color: dodgerblue;
   color: white;
   font: 300 0.9vmax "Roboto";
   width: 100%;
@@ -136,12 +140,13 @@
   transition: all 0.5s;
   border-radius: 4px;
   outline: none;
+
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.219);
 }
 
 .loginBtn:hover,
 .signUpBtn:hover {
-  background-color: rgb(179, 66, 46);
+  background-color:blue;
 }
 
 .shiftToLeft {
@@ -210,3 +215,4 @@
     padding: 1.8vmax;
   }
 }
+

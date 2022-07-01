@@ -1,14 +1,14 @@
-import React, { useEffect } from "react";
-import Sidebar from "./Sidebar.js";
-import "./dashboard.css";
-import { Typography } from "@material-ui/core";
-import { Link } from "react-router-dom";
-import { Doughnut, Line } from "react-chartjs-2";
-import { useSelector, useDispatch } from "react-redux";
-import { getAdminProduct } from "../../actions/productAction";
-import { getAllOrders } from "../../actions/orderAction.js";
-import { getAllUsers } from "../../actions/userAction.js";
-import MetaData from "../layout/MetaData";
+import React, { useEffect } from 'react';
+import Sidebar from './Sidebar.js';
+import './dashboard.css';
+import { Typography } from '@material-ui/core';
+import { Link } from 'react-router-dom';
+import { Doughnut, Line } from 'react-chartjs-2';
+import { useSelector, useDispatch } from 'react-redux';
+import { getAdminProduct } from '../../actions/productAction';
+import { getAllOrders } from '../../actions/orderAction.js';
+import { getAllUsers } from '../../actions/userAction.js';
+import MetaData from '../layout/MetaData';
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -41,65 +41,94 @@ const Dashboard = () => {
     });
 
   const lineState = {
-    labels: ["Initial Amount", "Amount Earned"],
+    labels: ['Initial Amount', 'Amount Earned'],
     datasets: [
       {
-        label: "TOTAL AMOUNT",
-        backgroundColor: ["tomato"],
-        hoverBackgroundColor: ["rgb(197, 72, 49)"],
+        label: 'TOTAL AMOUNT',
+        backgroundColor: ['tomato'],
+        hoverBackgroundColor: ['rgb(197, 72, 49)'],
         data: [0, totalAmount],
       },
     ],
   };
 
   const doughnutState = {
-    labels: ["Out of Stock", "InStock"],
+    labels: ['Out of Stock', 'InStock'],
     datasets: [
       {
-        backgroundColor: ["#00A6B4", "#6800B4"],
-        hoverBackgroundColor: ["#4B5000", "#35014F"],
+        backgroundColor: ['#00A6B4', '#6800B4'],
+        hoverBackgroundColor: ['#4B5000', '#35014F'],
         data: [outOfStock, products.length - outOfStock],
       },
     ],
   };
 
   return (
-    <div className="dashboard">
-      <MetaData title="Dashboard - Admin Panel" />
-      <Sidebar />
+    <div className='dashboard'>
+      <MetaData title='Dashboard - Admin Panel' />
+      <Sidebar className='mt-5' />
 
-      <div className="dashboardContainer">
-        <Typography component="h1">Dashboard</Typography>
+      <div className='dashboardContainer'>
+        <div className='dashboardSummary'>
+          <div class='container5'>
+            <div class='card5'>
+              <div class='box5'>
+                <div class='content5'>
+                 
+                    <h2>{products && products.length}</h2>
+                    <h1 style={{ color: 'white', opacity: '0.8' }}>Products</h1>
+                 
+                </div>
+              </div>
+            </div>
 
-        <div className="dashboardSummary">
-          <div>
+            <div class='card5'>
+              <div class='box5'>
+                <div class='content5'>
+                  <h2>{orders && orders.length}</h2>
+                  <h1 style={{ color: 'white', opacity: '0.8' }}>Order</h1>
+                </div>
+              </div>
+            </div>
+
+            <div class='card5'>
+              <div class='box5'>
+                <div class='content5'>
+                  <h2>{users && users.length}</h2>
+                  <h1 style={{ color: 'white', opacity: '0.8' }}>Users</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* <div>
             <p>
               Total Amount <br /> ₹{totalAmount}
             </p>
           </div>
-          <div className="dashboardSummaryBox2">
-            <Link to="/admin/products">
+          <div className='dashboardSummaryBox2'>
+            <Link to='/admin/products'>
               <p>Product</p>
               <p>{products && products.length}</p>
             </Link>
-            <Link to="/admin/orders">
+            <Link to='/admin/orders'>
               <p>Orders</p>
               <p>{orders && orders.length}</p>
             </Link>
-            <Link to="/admin/users">
+            <Link to='/admin/users'>
               <p>Users</p>
               <p>{users && users.length}</p>
             </Link>
-          </div>
+          </div> */}
         </div>
 
-        <div className="lineChart">
+        <div className='lineChart'>
           <Line data={lineState} />
         </div>
 
-        <div className="doughnutChart">
+        {/* <div className='doughnutChart'>
           <Doughnut data={doughnutState} />
-        </div>
+        </div> */}
       </div>
     </div>
   );

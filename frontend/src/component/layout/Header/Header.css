@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&family=Island+Moments&family=Open+Sans:wght@800&display=swap');
 .speedDial {
     position: absolute;
     right: 1.2vmax;
@@ -5,9 +6,24 @@
     opacity: 0.8;
     
   }
+
   
   .speedDialIcon {
     width: 56px;
     height: 56px;
     border-radius: 100%;
+  }
+
+  nav{
+    background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(37,145,251,0.98) 0.1%, rgba(0,7,128,1) 99.8% );
+
+    color: white;
+   
+  }
+
+  .nav-link{
+    font-size: 20px;
+    font-family: 'DM Sans', sans-serif;
+    font-family: 'Island Moments', cursive;
+    font-family: 'Open Sans', sans-serif;
   }

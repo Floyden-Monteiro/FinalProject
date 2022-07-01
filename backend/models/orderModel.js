@@ -6,20 +6,20 @@ const orderSchema = new mongoose.Schema({
       type: String,
       required: true,
     },
-    city: {
+    date: {
       type: String,
       required: true,
     },
 
-    state: {
-      type: String,
-      required: true,
-    },
+    // state: {
+    //   type: String,
+    //   required: true,
+    // },
 
-    country: {
-      type: String,
-      required: true,
-    },
+    // country: {
+    //   type: String,
+    //   required: true,
+    // },
     pinCode: {
       type: Number,
       required: true,
@@ -98,11 +98,16 @@ const orderSchema = new mongoose.Schema({
     required: true,
     default: "Processing",
   },
-  deliveredAt: Date,
+  canceledAt: Date,
   createdAt: {
     type: Date,
     default: Date.now,
   },
+  deliveredAt: Date,
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  }
 });
 
 module.exports = mongoose.model("Order", orderSchema);

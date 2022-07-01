@@ -20,6 +20,7 @@ import {
   ORDER_DETAILS_SUCCESS,
   ORDER_DETAILS_FAIL,
   CLEAR_ERRORS,
+  UPDATE_ORDER_CANCEL
 } from "../constants/orderConstants";
 
 export const newOrderReducer = (state = {}, action) => {
@@ -114,6 +115,7 @@ export const orderReducer = (state = {}, action) => {
   switch (action.type) {
     case UPDATE_ORDER_REQUEST:
     case DELETE_ORDER_REQUEST:
+    case UPDATE_ORDER_CANCEL:
       return {
         ...state,
         loading: true,

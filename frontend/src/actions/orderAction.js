@@ -11,6 +11,7 @@ import {
   UPDATE_ORDER_REQUEST,
   UPDATE_ORDER_SUCCESS,
   UPDATE_ORDER_FAIL,
+  UPDATE_ORDER_CANCEL,
   DELETE_ORDER_REQUEST,
   DELETE_ORDER_SUCCESS,
   DELETE_ORDER_FAIL,
@@ -131,6 +132,39 @@ export const getOrderDetails = (id) => async (dispatch) => {
     });
   }
 };
+
+
+
+export const cancelOrder = (id, order) => async (dispatch) => {
+  try {
+    dispatch({ type: UPDATE_ORDER_CANCEL });
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    const { data } = await axios.put(
+      `/api/v1/order/${id}`,
+      order,
+      config
+    );
+
+    dispatch({ type: UPDATE_ORDER_SUCCESS, payload: data.success });
+  } catch (error) {
+    dispatch({
+      type: UPDATE_ORDER_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+}
+
+
+
+
+
+
+
 
 // Clearing Errors
 export const clearErrors = () => async (dispatch) => {

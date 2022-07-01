@@ -1,15 +1,19 @@
 .newProductContainer {
   width: 100%;
   box-sizing: border-box;
-  background-color: rgb(221, 221, 221);
+  background-color: #f1f1;
   border-left: 1px solid rgba(0, 0, 0, 0.158);
+  font-family: Arial, Helvetica, sans-serif;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 95vh;
+  border-radius:0.5rem;
+
 }
 .newProductContainer h1 {
+  border-radius: 25px;
   color: rgba(0, 0, 0, 0.733);
-  font: 300 2rem "Roboto";
+  font: 300 2rem "Arial";
   text-align: center;
 }
 
@@ -20,9 +24,10 @@
   margin: auto;
   padding: 3vmax;
   justify-content: space-evenly;
-  height: 70%;
-  width: 40vh;
+  height: 80%;
+  width: 80vh;
   background-color: white;
+ border-radius: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.267);
 }
 
@@ -30,6 +35,7 @@
   display: flex;
   width: 100%;
   align-items: center;
+ 
 }
 .createProductForm > div > input,
 .createProductForm > div > select,
@@ -54,6 +60,7 @@
 #createProductFormFile > input {
   display: flex;
   padding: 0%;
+  margin: 10px;
 }
 
 #createProductFormFile > input::file-selector-button {
@@ -85,9 +92,9 @@
 }
 #createProductBtn {
   border: none;
-  background-color: tomato;
+  background-color: dodgerblue;
   color: white;
-  font: 300 0.9vmax "Roboto";
+  font: 300 0.9vmax "Arial";
   width: 100%;
   padding: 0.8vmax;
   cursor: pointer;
@@ -98,7 +105,7 @@
 }
 
 #createProductBtn:hover {
-  background-color: rgb(179, 66, 46);
+  background-color: blue;
 }
 
 @media screen and (max-width: 600px) {

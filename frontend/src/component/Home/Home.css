@@ -1,5 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&family=Island+Moments&family=Open+Sans:wght@800&family=Pacifico&display=swap');
+.Fragment{
+   background-color: #2a2a72;
+background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%);
+}
+
 .banner {
-  background-image: url("../../images/cover.jfif");
+  /* background-image: url("../../images/cover.jfif"); */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -10,6 +16,9 @@
   align-items: center;
   justify-content: center;
   color: white;
+  
+ 
+
 }
 
 .banner > h1 {
@@ -59,6 +68,8 @@
   padding: 1vmax;
   margin: 5vmax auto;
   color: rgb(0, 0, 0, 0.7);
+
+
 }
 
 .container {
@@ -68,6 +79,9 @@
   flex-wrap: wrap;
   justify-content: center;
   max-width: 100%;
+  
+  /* background-color: #FAACA8;
+  background-image: linear-gradient(19deg, #FAACA8 0%, #DDD6F3 50%, #ffffff 100%); */
 }
 
 .productCard {
@@ -144,3 +158,93 @@
 
 }
 
+
+
+
+
+/* 
+.slider{
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  background: no-repeat;
+  background-size: cover;
+  background-image: url(./images/c1.jpg);
+  animation: slide 20s infinite;
+} */
+
+/* @keyframes slide{
+  25%{
+    background-image: url(./images/c2.jpg);
+  
+  }
+  50%{
+    background-image: url(./images/c3.jpg);
+  
+
+  }
+  75%{
+    background-image: url(./images/c4.jpg);
+   
+
+  }
+  100%{
+    background: url(./images/i1.jpg);
+    background: no-repeat;
+
+  }
+} */
+
+
+.homePage{
+margin: 4rem;
+
+
+width: 100%;
+margin-right: 20px;
+}
+
+.homePage1{
+
+  margin: 2.8rem;
+  width: 61%;
+  height: 95%;
+  /* margin-top: -100px; */
+  background-image: url(./images/avan1.png);
+  /* background:no-repeat; */
+  /* margin-bottom: 120px; */
+  padding: 100px;
+  animation: slide 20s infinite;
+  
+}
+
+.btnnnnn{
+   display: flex;
+  justify-content: center;
+  align-items: center;
+  ;
+}
+
+
+.hhome{
+  height: 500px;
+  display: flex;
+  /* margin: 4rem; */
+  color:white
+  
+}
+.hh{
+   background: no-repeat;
+   background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(37,145,251,0.98) 0.1%, rgba(0,7,128,1) 99.8% );
+}
+
+
+ 
+
+.easy{
+  font-family: 'DM Sans', sans-serif;
+  font-family: 'Island Moments', cursive;
+  font-family: 'Open Sans', sans-serif;
+  font-family: 'Pacifico', cursive;
+  /* color: white; */
+}

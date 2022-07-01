@@ -52,7 +52,7 @@ const ResetPassword = ({ history, match }) => {
           <MetaData title="Change Password" />
           <div className="resetPasswordContainer">
             <div className="resetPasswordBox">
-              <h2 className="resetPasswordHeading">Update Profile</h2>
+              <h2 className="resetPasswordHeading">New Password</h2>
 
               <form
                 className="resetPasswordForm"

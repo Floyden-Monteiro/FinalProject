@@ -46,7 +46,7 @@ const ForgotPassword = () => {
           <MetaData title="Forgot Password" />
           <div className="forgotPasswordContainer">
             <div className="forgotPasswordBox">
-              <h2 className="forgotPasswordHeading">Forgot Password</h2>
+              <h2 className="forgotPasswordHeading">Enter Email</h2>
 
               <form
                 className="forgotPasswordForm"

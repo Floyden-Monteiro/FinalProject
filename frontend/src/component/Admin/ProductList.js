@@ -1,20 +1,20 @@
-import React, { Fragment, useEffect } from "react";
-import { DataGrid } from "@material-ui/data-grid";
-import "./productList.css";
-import { useSelector, useDispatch } from "react-redux";
+import React, { Fragment, useEffect } from 'react';
+import { DataGrid } from '@material-ui/data-grid';
+import './productList.css';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   clearErrors,
   getAdminProduct,
   deleteProduct,
-} from "../../actions/productAction";
-import { Link } from "react-router-dom";
-import { useAlert } from "react-alert";
-import { Button } from "@material-ui/core";
-import MetaData from "../layout/MetaData";
-import EditIcon from "@material-ui/icons/Edit";
-import DeleteIcon from "@material-ui/icons/Delete";
-import SideBar from "./Sidebar";
-import { DELETE_PRODUCT_RESET } from "../../constants/productConstants";
+} from '../../actions/productAction';
+import { Link } from 'react-router-dom';
+import { useAlert } from 'react-alert';
+import { Button } from '@material-ui/core';
+import MetaData from '../layout/MetaData';
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
+import SideBar from './Sidebar';
+import { DELETE_PRODUCT_RESET } from '../../constants/productConstants';
 
 const ProductList = ({ history }) => {
   const dispatch = useDispatch();
@@ -43,8 +43,8 @@ const ProductList = ({ history }) => {
     }
 
     if (isDeleted) {
-      alert.success("Product Deleted Successfully");
-      history.push("/admin/dashboard");
+      alert.success('Product Deleted Successfully');
+      history.push('/admin/dashboard');
       dispatch({ type: DELETE_PRODUCT_RESET });
     }
 
@@ -52,47 +52,47 @@ const ProductList = ({ history }) => {
   }, [dispatch, alert, error, deleteError, history, isDeleted]);
 
   const columns = [
-    { field: "id", headerName: "Product ID", minWidth: 200, flex: 0.5 },
+    { field: 'id', headerName: 'Product ID', minWidth: 200, flex: 0.5 },
 
     {
-      field: "name",
-      headerName: "Name",
-      minWidth: 350,
-      flex: 1,
+      field: 'name',
+      headerName: 'Name',
+      // minWidth: 150,
+      flex: 0.3,
     },
     {
-      field: "stock",
-      headerName: "Stock",
-      type: "number",
-      minWidth: 150,
+      field: 'stock',
+      headerName: 'Stock',
+      type: 'number',
+      // minWidth: 150,
       flex: 0.3,
     },
 
     {
-      field: "price",
-      headerName: "Price",
-      type: "number",
-      minWidth: 270,
+      field: 'price',
+      headerName: 'Price',
+      type: 'number',
+      // minWidth: 270,
       flex: 0.5,
     },
 
     {
-      field: "actions",
+      field: 'actions',
       flex: 0.3,
-      headerName: "Actions",
-      minWidth: 150,
-      type: "number",
+      headerName: 'Actions',
+      // minWidth: 150,
+      type: 'number',
       sortable: false,
       renderCell: (params) => {
         return (
           <Fragment>
-            <Link to={`/admin/product/${params.getValue(params.id, "id")}`}>
+            <Link to={`/admin/product/${params.getValue(params.id, 'id')}`}>
               <EditIcon />
             </Link>
 
             <Button
               onClick={() =>
-                deleteProductHandler(params.getValue(params.id, "id"))
+                deleteProductHandler(params.getValue(params.id, 'id'))
               }
             >
               <DeleteIcon />
@@ -119,10 +119,11 @@ const ProductList = ({ history }) => {
     <Fragment>
       <MetaData title={`ALL PRODUCTS - Admin`} />
 
-      <div className="dashboard">
-        <SideBar />
+      <SideBar />
+
+      {/* <div className="dashboard">
         <div className="productListContainer">
-          <h1 id="productListHeading">ALL PRODUCTS</h1>
+          <h6 id="productListHeading">ALL PRODUCTS</h6>
 
           <DataGrid
             rows={rows}
@@ -132,6 +133,57 @@ const ProductList = ({ history }) => {
             className="productListTable"
             autoHeight
           />
+        </div>
+      </div> */}
+
+      <div class='projects mb-4' style={{ marginLeft: '210px', width: '84%' }}>
+        <div class='projects-inner'>
+          <header class='projects-header'>
+            <div class='title'>All Products</div>
+            <i class='zmdi zmdi-download'></i>
+          </header>
+          <table class='projects-table'>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Id</th>
+                <th> Stock</th>
+                <th>Price</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+
+            {products &&
+              products.map((item) => (
+                <tr>
+                  <td>
+                    <p>{item.name}</p>
+                  </td>
+                  <td>
+                    <p>{item._id}</p>
+                  </td>
+
+                  <td>
+                    <p className='text'>{item.Stock}</p>
+                  </td>
+
+               
+                  <td>
+                    <p>{item.price}</p>
+                  </td>
+
+                  <td>
+                    <Link to={`/admin/product/${item._id}`}>
+                      <EditIcon />
+                    </Link>
+
+                    <Button onClick={() => deleteProductHandler(item._id)}>
+                      <DeleteIcon />
+                    </Button> 
+                  </td>
+                </tr>
+              ))}
+          </table>
         </div>
       </div>
     </Fragment>

@@ -128,3 +128,33 @@ exports.deleteOrder = catchAsyncErrors(async (req, res, next) => {
     success: true,
   });
 });
+
+
+
+
+exports.cancelOrder = catchAsyncErrors(async (req, res, next) => {
+  const order = await Order.findById(req.params.id);
+
+  if (!order) {
+    return next(new ErrorHander("Order not found with this Id", 404));
+  }
+
+  if (order.orderStatus === "Delivered") {
+    return next(new ErrorHander("You have already delivered this order", 400));
+  }
+
+  if (req.body.status === "Shipped") {
+    return next(new ErrorHander("Your order has been shipped", 400));
+    
+  }
+  order.orderStatus = req.body.status;
+
+  if (req.body.status === "Cancel") {
+    order.canceledAt = Date.now();
+  }
+
+  await order.save({ validateBeforeSave: false });
+  res.status(200).json({
+    success: true,
+  });
+});

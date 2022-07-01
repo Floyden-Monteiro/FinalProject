@@ -67,7 +67,7 @@ const Products = ({ match }) => {
       ) : (
         <Fragment>
           <MetaData title="PRODUCTS -- ECOMMERCE" />
-          <h2 className="productsHeading">Products</h2>
+          <h2 className="productsHeading">Cakes</h2>
 
           <div className="products">
             {products &&
@@ -87,18 +87,7 @@ const Products = ({ match }) => {
               max={25000}
             />
 
-            <Typography>Categories</Typography>
-            <ul className="categoryBox">
-              {categories.map((category) => (
-                <li
-                  className="category-link"
-                  key={category}
-                  onClick={() => setCategory(category)}
-                >
-                  {category}
-                </li>
-              ))}
-            </ul>
+      
 
             <fieldset>
               <Typography component="legend">Ratings Above</Typography>

@@ -4,10 +4,16 @@ import Loader from '../layout/Loader/Loader';
 import { Link } from 'react-router-dom';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import LockOpenIcon from '@material-ui/icons/LockOpen';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelope, faKey, faUser } from '@fortawesome/free-solid-svg-icons';
+
 import FaceIcon from '@material-ui/icons/Face';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearErrors, login, register } from '../../actions/userAction';
 import { useAlert, positions, transitions } from 'react-alert';
+
+import './css/main.css';
+import './css/util.css';
 
 const LoginSignUp = ({ history, location }) => {
   const dispatch = useDispatch();
@@ -16,6 +22,7 @@ const LoginSignUp = ({ history, location }) => {
   const { error, loading, isAuthenticated } = useSelector(
     (state) => state.user
   );
+
 
   const loginTab = useRef(null);
   const registerTab = useRef(null);
@@ -73,6 +80,7 @@ const LoginSignUp = ({ history, location }) => {
 
   useEffect(() => {
     if (error) {
+     
       alert.show(error, {
         position: positions.TOP_CENTER,
         transition: 'scale',
@@ -111,14 +119,15 @@ const LoginSignUp = ({ history, location }) => {
         <Fragment>
           <div className='LoginSignUpContainer'>
             <div className='LoginSignUpBox'>
+             
               <div>
                 <div className='login_signUp_toggle'>
-                  <p onClick={(e) => switchTabs(e, 'login')}>LOGIN</p>
-                  <p onClick={(e) => switchTabs(e, 'register')}>REGISTER</p>
+                  <p onClick={(e) => switchTabs(e, 'login')}> USER LOGIN</p>
+                  <p onClick={(e) => switchTabs(e, 'register')}>SIGNIN</p>
                 </div>
                 <button ref={switcherTab}></button>
               </div>
-              <form className='loginForm' ref={loginTab} onSubmit={loginSubmit}>
+              {/* <form className='loginForm' ref={loginTab} onSubmit={loginSubmit}>
                 <div className='loginEmail'>
                   <MailOutlineIcon />
                   <input
@@ -141,8 +150,75 @@ const LoginSignUp = ({ history, location }) => {
                 </div>
                 <Link to='/password/forgot'>Forget Password ?</Link>
                 <input type='submit' value='Login' className='loginBtn' />
-              </form>
+              </form> */}
+
               <form
+                className=' loginForm validate-form'
+                ref={loginTab}
+                onSubmit={loginSubmit}
+                style={{
+                  bordeRadius: '105px',
+                }}
+              >
+                <div
+                  className='wrap-input100 validate-input'
+                  data-validate='Valid email is required: ex@abc.xyz'
+                >
+                  <input
+                    className='input100'
+                    type='email'
+                    name='email'
+                    required
+                    value={loginEmail}
+                    onChange={(e) => setLoginEmail(e.target.value)}
+                    placeholder='  Email'
+                  ></input>
+                  <span className='focus-input100'></span>
+                  <span className='symbol-input100'>
+                    <FontAwesomeIcon icon={faEnvelope}></FontAwesomeIcon>
+                  </span>
+                </div>
+
+                <div
+                  className='wrap-input100 validate-input'
+                  data-validate='Password is required'
+                >
+                  <input
+                    className='input100'
+                    type='password'
+                    name='password'
+                    placeholder='  password'
+                    required
+                    value={loginPassword}
+                    onChange={(e) => setLoginPassword(e.target.value)}
+                  ></input>
+                  <span className='focus-input100'></span>
+                  <span className='symbol-input100'>
+                    <FontAwesomeIcon icon={faKey}></FontAwesomeIcon>
+                  </span>
+                </div>
+
+                <input
+                  type='submit'
+                  value='Login'
+                  className='btn btn-primary w-1'
+                  style={{
+                    padding: '10px',
+                  }}
+                />
+
+                <div className='text-center p-t-136'>
+                  <Link
+                    className='container-login100-form-btn text-info'
+                    style={{ textDecoration: 'none', Color: 'black' }}
+                    to='/password/forgot'
+                  >
+                    Forget Password ?
+                  </Link>
+                </div>
+              </form>
+
+              {/* <form
                 className='signUpForm'
                 ref={registerTab}
                 encType='multipart/form-data'
@@ -192,6 +268,83 @@ const LoginSignUp = ({ history, location }) => {
                   />
                 </div>
                 <input type='submit' value='Register' className='signUpBtn' />
+              </form> */}
+
+              <form
+                className='signUpForm validate-form'
+                ref={registerTab}
+                encType='multipart/form-data'
+                onSubmit={registerSubmit}
+              >
+                <div
+                  className='wrap-input100 validate-input'
+                  data-validate='Valid email is required: ex@abc.xyz'
+                >
+                  <input
+                    className='input100'
+                    type='text'
+                    name='name'
+                    pattern="[A-Za-z]"
+                    required
+                    placeholder='  Name'
+                    value={name}
+                    onChange={registerDataChange}
+                  ></input>
+                  <span className='focus-input100'></span>
+                  <span className='symbol-input100'>
+                    <FontAwesomeIcon icon={faUser}></FontAwesomeIcon>
+                  </span>
+                </div>
+                <div
+                  className='wrap-input100 validate-input'
+                  data-validate='Valid email is required: ex@abc.xyz'
+                >
+                  <input
+                    className='input100'
+                    type='email'
+                    placeholder='  Email'
+                    required
+                    name='email'
+                    value={email}
+                    onChange={registerDataChange}
+                  ></input>
+                  <span className='focus-input100'></span>
+                  <span className='symbol-input100'>
+                    <FontAwesomeIcon icon={faEnvelope}></FontAwesomeIcon>
+                  </span>
+                </div>
+
+                <div
+                  className='wrap-input100 validate-input'
+                  data-validate='Password is required'
+                >
+                  <input
+                    className='input100'
+                    type='password'
+                    placeholder='  Password'
+                    required
+                    name='password'
+                    value={password}
+                    onChange={registerDataChange}
+                  ></input>
+                  <span className='focus-input100'></span>
+                  <span className='symbol-input100'>
+                    <FontAwesomeIcon icon={faKey}></FontAwesomeIcon>
+                  </span>
+                </div>
+
+                <div id='registerImage'>
+                  <img src={avatarPreview} alt='Avatar Preview' />
+                  <input
+                    type='file'
+                    name='avatar'
+                    accept='image/*'
+                    onChange={registerDataChange}
+                  />
+                </div>
+                <div className='container-login100-form-btn'>
+                  <input type='submit' value='Register' className='signUpBtn' />
+                </div>
               </form>
             </div>
           </div>

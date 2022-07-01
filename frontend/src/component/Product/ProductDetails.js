@@ -7,11 +7,13 @@ import {
   getProductDetails,
   newReview,
 } from '../../actions/productAction';
+
 import ReviewCard from './ReviewCard.js';
 import Loader from '../layout/Loader/Loader';
 import { useAlert } from 'react-alert';
 import MetaData from '../layout/MetaData';
 import { addItemsToCart } from '../../actions/cartAction';
+
 import {
   Dialog,
   DialogActions,
@@ -21,6 +23,7 @@ import {
 } from '@material-ui/core';
 import { Rating } from '@material-ui/lab';
 import { NEW_REVIEW_RESET } from '../../constants/productConstants';
+// import { myOrders } from '../../actions/orderAction';
 
 const ProductDetails = ({ match }) => {
   const dispatch = useDispatch();
@@ -30,6 +33,8 @@ const ProductDetails = ({ match }) => {
     (state) => state.productDetails
   );
 
+  // const { orders } = useSelector((state) => state.myOrders);
+  // console.log(orders);
   const { success, error: reviewError } = useSelector(
     (state) => state.newReview
   );
@@ -47,17 +52,23 @@ const ProductDetails = ({ match }) => {
   const [comment, setComment] = useState('');
 
   const increaseQuantity = () => {
-    if (product.Stock <= quantity) return;
+    // if (product.Stock <= quantity) return;
 
-    const qty = quantity + 1;
-    setQuantity(qty);
+    if (quantity < 3) {
+      // const qty = quantity + 1;
+      // setQuantity(qty);
+      setQuantity(quantity + 1);
+    }
   };
 
   const decreaseQuantity = () => {
-    if (1 >= quantity) return;
+    // if (1 >= quantity) return;
 
-    const qty = quantity - 1;
-    setQuantity(qty);
+    // const qty = quantity - 1;
+    // setQuantity(qty);
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
   };
 
   const addToCartHandler = () => {
@@ -135,6 +146,7 @@ const ProductDetails = ({ match }) => {
                       className='detailsBlock-3-1-1'
                       style={{ display: 'flex' }}
                     >
+                      <h4>KG : </h4>
                       <button className='m-2' onClick={decreaseQuantity}>
                         -
                       </button>

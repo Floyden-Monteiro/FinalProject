@@ -5,24 +5,28 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(231, 231, 231);
+  background-color:#f1f1;
   position: fixed;
+  font-family: ai;
   top: 0%;
   left: 0;
 }
 
 .updateProfileBox {
   background-color: white;
-  width: 25vw;
-  height: 70vh;
+  width: 40vw;
+  height: 60vh;
+  margin-top:20px ;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5); 
   box-sizing: border-box;
   overflow: hidden;
+  border-radius: 20px;
 }
 
 .updateProfileHeading {
   text-align: center;
   color: rgba(0, 0, 0, 0.664);
-  font: 400 1.3vmax "Roboto";
+  font: 400 1.3vmax "";
   padding: 1.3vmax;
   border-bottom: 1px solid rgba(0, 0, 0, 0.205);
   width: 50%;
@@ -44,12 +48,15 @@
   display: flex;
   width: 100%;
   align-items: center;
+ 
 }
 
 .updateProfileForm > div > input {
   padding: 1vmax 4vmax;
+  /* padding-left: 10px; */
   padding-right: 1vmax;
   width: 100%;
+  margin: 15px;
   box-sizing: border-box;
   border: 1px solid rgba(0, 0, 0, 0.267);
   border-radius: 4px;
@@ -62,6 +69,7 @@
   transform: translateX(1vmax);
   font-size: 1.6vmax;
   color: rgba(0, 0, 0, 0.623);
+  margin: 20px;
 }
 
 #updateProfileImage > img {
@@ -94,21 +102,18 @@
 
 .updateProfileBtn {
   border: none;
-  background-color: tomato;
+
   color: white;
-  font: 300 0.9vmax "Roboto";
+  font: 300 0.9vmax "Arial";
+
   width: 100%;
-  padding: 0.8vmax;
+  padding: 1vmax;
   cursor: pointer;
-  transition: all 0.5s;
-  border-radius: 4px;
+  transition: all 5px;
   outline: none;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.219);
 }
 
-.updateProfileBtn:hover {
-  background-color: rgb(179, 66, 46);
-}
 
 @media screen and (max-width: 600px) {
   .updateProfileContainer {
@@ -142,8 +147,5 @@
     font: 400 1.8vmax cursive;
   }
 
-  .updateProfileBtn {
-    font: 300 1.9vmax "Roboto";
-    padding: 1.8vmax;
-  }
+
 }

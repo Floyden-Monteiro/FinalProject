@@ -26,7 +26,7 @@ const UserOptions = ({ user }) => {
     {
       icon: (
         <ShoppingCartIcon
-          style={{ color: cartItems.length > 0 ? 'tomato' : 'unset' }}
+          style={{ color: cartItems.length > 0 ? 'dodgerblue' : 'unset' }}
         />
       ),
       name: `Cart(${cartItems.length})`,
@@ -63,7 +63,10 @@ const UserOptions = ({ user }) => {
 
   return (
     <Fragment>
-      <Backdrop open={open} style={{ zIndex: '10' }} />
+      <Backdrop
+        open={open}
+        style={{ zIndex: '10', backgroundColor: 'rgba(0, 0, 0, 0.7)' }}
+      />
       <SpeedDial
         ariaLabel='SpeedDial tooltip example'
         onClose={() => setOpen(false)}
@@ -87,6 +90,7 @@ const UserOptions = ({ user }) => {
             tooltipTitle={item.name}
             onClick={item.func}
             tooltipOpen={window.innerWidth <= 600 ? true : false}
+            
           />
         ))}
       </SpeedDial>

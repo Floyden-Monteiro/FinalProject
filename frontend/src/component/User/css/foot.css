@@ -1,0 +1,17 @@
+footer {
+    background-color: #eee6d3;
+  }
+  h5 {
+    letter-spacing: 2px;
+    color: #818963;
+  }
+  a {
+    color: #4f4f4f;
+  }
+  #tabl {
+    color: #4f4f4f;
+    border-color: rgb(36, 35, 35);
+  }
+  #down{
+      background-color: rgba(0, 0, 0, 0.2);
+  }

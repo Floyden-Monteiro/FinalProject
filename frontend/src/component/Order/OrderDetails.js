@@ -1,27 +1,54 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import './orderDetails.css';
 import { useSelector, useDispatch } from 'react-redux';
 import MetaData from '../layout/MetaData';
 import { Link } from 'react-router-dom';
-import { p } from '@material-ui/core';
-import { getOrderDetails, clearErrors } from '../../actions/orderAction';
+import AccountTreeIcon from '@material-ui/icons/AccountTree';
+import { Button } from '@material-ui/core';
+import {
+  getOrderDetails,
+  clearErrors,
+  cancelOrder,
+} from '../../actions/orderAction';
 import Loader from '../layout/Loader/Loader';
 import { useAlert } from 'react-alert';
+import { UPDATE_ORDER_RESET } from '../../constants/orderConstants';
 
-const OrderDetails = ({ match }) => {
+const OrderDetails = ({ match, history }) => {
   const { order, error, loading } = useSelector((state) => state.orderDetails);
+  const { error: updateError, isUpdated } = useSelector((state) => state.order);
+
+  const updateOrderSubmitHandler = (e) => {
+    e.preventDefault();
+
+    const myForm = new FormData();
+
+    myForm.set('status', status);
+
+    dispatch(cancelOrder(match.params.id, myForm));
+  };
 
   const dispatch = useDispatch();
   const alert = useAlert();
+
+  const [status, setStatus] = useState('');
 
   useEffect(() => {
     if (error) {
       alert.error(error);
       dispatch(clearErrors());
     }
+    if (updateError) {
+      alert.error(updateError);
+      dispatch(clearErrors());
+    }
+    if (isUpdated) {
+      alert.success('Order Updated Successfully');
+      dispatch({ type: UPDATE_ORDER_RESET });
+    }
 
     dispatch(getOrderDetails(match.params.id));
-  }, [dispatch, alert, error, match.params.id]);
+  }, [dispatch, alert, error, match.params.id, isUpdated, updateError]);
   return (
     <Fragment>
       {loading ? (
@@ -41,13 +68,13 @@ const OrderDetails = ({ match }) => {
                   <span>{order.user && order.user.name}</span>
                 </div>
                 <div>
-                  <p  className='fw-bolder'>Phone:</p>
+                  <p className='fw-bolder'>Phone:</p>
                   <span>
                     {order.shippingInfo && order.shippingInfo.phoneNo}
                   </span>
                 </div>
                 <div>
-                  <p  className='fw-bolder'>Address:</p>
+                  <p className='fw-bolder'>Address:</p>
                   <span>
                     {order.shippingInfo &&
                       `${order.shippingInfo.address}, ${order.shippingInfo.pinCode}`}
@@ -77,7 +104,7 @@ const OrderDetails = ({ match }) => {
                     Amount:
                   </p>
                   <span className='fw-bolder fs-6'>
-                  ₹ {order.totalPrice && order.totalPrice}
+                    ₹ {order.totalPrice && order.totalPrice}
                   </span>
                 </div>
               </div>
@@ -90,13 +117,21 @@ const OrderDetails = ({ match }) => {
                   className={
                     order.orderStatus && order.orderStatus === 'Delivered'
                       ? 'btn-success text-center text-white rounded-2 p-2 border-1'
-                      : 'btn-danger text-center text-white rounded-2 p-2'
+                      : order.orderStatus && order.orderStatus === 'Cancel'
+                      ? 'btn-danger text-center text-white rounded-2 p-2'
+                      : order.orderStatus && order.orderStatus === 'Processing'
+                      ? 'btn-info text-center text-white rounded-2 p-2'
+                      : 'btn-warning text-center text-white rounded-2 p-2'
                   }
                 >
                   {order.orderStatus && order.orderStatus}
                 </p>
               </div>
               <p component='h6'>Order #{order && order._id}</p>
+              <p component='h6'>
+                Delivery Date{' '}
+                {order.shippingInfo && ` ${order.shippingInfo.date}`}
+              </p>
 
               <div className='orderDetailsCartItems'>
                 <p style={{ marginLeft: '-65px' }}>Order Items</p>
@@ -105,7 +140,10 @@ const OrderDetails = ({ match }) => {
                     order.orderItems.map((item) => (
                       <div key={item.product}>
                         <img src={item.image} alt='Product' />
-                        <Link to={`/product/${item.product}`}  className='fw-bolder'>
+                        <Link
+                          to={`/product/${item.product}`}
+                          className='fw-bolder'
+                        >
                           {item.name}
                         </Link>{' '}
                         <span>
@@ -115,6 +153,44 @@ const OrderDetails = ({ match }) => {
                       </div>
                     ))}
                 </div>
+              </div>
+
+              <div
+                style={{
+                  display:
+                    order.orderStatus === 'Delivered' ||
+                    order.orderStatus === 'Shipped'
+                      ? 'none'
+                      : 'block',
+                }}
+              >
+                <form
+                  className='updateOrderForm'
+                  onSubmit={updateOrderSubmitHandler}
+                >
+                  <h1>Cancel Order</h1>
+
+                  <div>
+                    <AccountTreeIcon />
+                    <select onChange={(e) => setStatus(e.target.value)}>
+                      <option value=''>Cancel Order Here</option>
+
+                      {order.orderStatus === 'Processing' && (
+                        <option value='Cancel'>Cancel</option>
+                      )}
+                    </select>
+                  </div>
+
+                  <Button
+                    id='createProductBtn'
+                    type='submit'
+                    disabled={
+                      loading ? true : false || status === '' ? true : false
+                    }
+                  >
+                    Cancel Order
+                  </Button>
+                </form>
               </div>
             </div>
           </div>

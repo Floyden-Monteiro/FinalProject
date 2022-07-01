@@ -9,7 +9,7 @@
 .dashboardContainer {
   border-left: 1px solid rgba(0, 0, 0, 0.13);
   background-color: rgb(255, 255, 255);
-  padding: 3rem 0;
+  /* padding: 3rem 0; */
 }
 
 .dashboardContainer > h1 {
@@ -17,8 +17,8 @@
   font: 300 2rem "Roboto";
   text-align: center;
   width: 50%;
-  padding: 1.5rem;
-  margin: auto;
+  /* padding: 1.5rem; */
+  /* margin: auto; */
 }
 
 .dashboardSummary {
@@ -31,9 +31,9 @@
   justify-content: center;
 }
 .dashboardSummary > div > p {
-  background-color: rgba(70, 117, 218, 0.932);
+  /* background-color: dodgerblue; */
   color: white;
-  font: 300 1.3rem "Roboto";
+  font: 300 1.3rem "Arial";
   text-align: center;
   padding: 1.5rem;
   width: 100%;
@@ -43,13 +43,13 @@
   color: rgb(0, 0, 0);
   font: 300 2rem "Roboto";
   text-align: center;
-  background-color: rgb(255, 233, 174);
+  background-color: rgb(234, 179, 28);
   text-decoration: none;
   padding: 1.5rem;
   width: 10vmax;
   height: 10vmax;
   margin: 2rem;
-  border-radius: 100%;
+  border-radius: 10%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -62,7 +62,7 @@
 }
 
 .dashboardSummaryBox2 > a:last-child {
-  background-color: rgb(51, 51, 51);
+  background-color: rgb(171, 52, 52);
   color: rgb(255, 255, 255);
 }
 
@@ -94,4 +94,122 @@
     margin: 1rem;
     font: 300 0.9rem "Roboto";
   }
+}
+
+.sidebar{
+  margin-top: 75px;
+}
+
+
+
+
+
+
+
+
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;800&display=swap");
+
+
+
+
+
+.container5 .card5 {
+  position: relative;
+  min-width: 320px;
+  height: 240px;
+  box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.2),
+    inset -5px -5px 15px rgba(255, 255, 255, 0.1),
+    5px 5px 15px rgba(0, 0, 0, 0.3), -5px -5px 15px rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  margin: 10px;
+  transition: 0.5s;
+}
+
+.container5 .card5:nth-child(1) .box5 .content5 a {
+  background: #2196f3;
+}
+
+.container5 .card5:nth-child(2) .box5 .content5 a {
+  background: #e91e63;
+}
+
+.container5 .card5:nth-child(3) .box5 .content5 a {
+  background: #23c186;
+}
+
+.container5 .card5 .box5 {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  background: #2a2b2f;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  transition: 0.5s;
+}
+
+.container5 .card5 .box5:hover {
+  transform: translateY(-20px);
+}
+
+.container5 .card5 .box5:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.container5 .card5 .box5 .content5 {
+  padding: 20px;
+  text-align: center;
+}
+
+.container5 .card5 .box5 .content5 h2 {
+  position: absolute;
+  top: -10px;
+  right: 30px;
+  font-size: 8rem;
+  color: rgba(255, 255, 255, 0.1);
+}
+
+.container5 .card5.box5 .content5 h3 {
+  font-size: 1.8rem;
+  color: #fff;
+  z-index: 1;
+  transition: 0.5s;
+  margin-bottom: 15px;
+}
+
+.container5 .card5.box5 .conten5t p {
+  font-size: 1rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.9);
+  z-index: 1;
+  transition: 0.5s;
+}
+
+.container5 .card5 .box5 .content5 a {
+  position: relative;
+  display: inline-block;
+  padding: 8px 20px;
+  background: black;
+  border-radius: 5px;
+  text-decoration: none;
+  color: white;
+  margin-top: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  transition: 0.5s;
+}
+.container5 .card5 .box5 .content5 a:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+  background: #fff;
+  color: #000;
 }

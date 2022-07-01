@@ -19,7 +19,7 @@ const Contact = () => {
                 <span>CONTACT</span>
                 <span>US</span>
               </div>
-              <div class='app-contact'>CONTACT INFO : +62 81 314 928 595</div>
+              <div class='app-contact'>CONTACT INFO : +91 81 314 928 595</div>
             </div>
             <div class='screen-body-item'>
               <div class='app-form'>
@@ -39,7 +39,7 @@ const Contact = () => {
                   <button class='app-form-button'>CANCEL</button>
                   <a
                     class='app-form-button'
-                    href='mailto:mymailforabhi@gmail.com'
+                    href='mailto:aarwim837@gmail.com'
                     style={{
                       textDecoration: 'none',
                       fontFamily: 'Montserrat',

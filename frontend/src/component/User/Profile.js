@@ -58,7 +58,7 @@ const Profile = ({ history }) => {
                       style={{ width: '200px', borderRadius: '10px' }}
                     />
                     <div class='mt-3'>
-                      <h4>{user.name}</h4>
+                      <h4 className="text-dark">{user.name}</h4>
 
                       <Link class='btn btn-primary' to='/orders'>
                         My Orders
@@ -74,27 +74,27 @@ const Profile = ({ history }) => {
                 <div class='card-body'>
                   <div class='row'>
                     <div class='col-sm-3'>
-                      <h6 class='mb-0'>Full Name</h6>
+                      <h6 class='mb-0 text-dark'>Full Name</h6>
                     </div>
-                    <div class='col-sm-9 text-secondary'>{user.name}</div>
+                    <div class='col-sm-9 text-dark'>{user.name}</div>
                   </div>
 
                   <hr />
 
                   <div class='row'>
                     <div class='col-sm-3'>
-                      <h6 class='mb-0'>Email</h6>
+                      <h6 class='mb-0 text-dark'>Email</h6>
                     </div>
-                    <div class='col-sm-9 text-secondary'>{user.email}</div>
+                    <div class='col-sm-9 text-dark'>{user.email}</div>
                   </div>
 
                   <hr />
 
                   <div class='row'>
                     <div class='col-sm-3'>
-                      <h6 class='mb-0'>Joined on</h6>
+                      <h6 class='mb-0 text-dark'>Joined on</h6>
                     </div>
-                    <div class='col-sm-9 text-secondary'>
+                    <div class='col-sm-9 text-dark'>
                       {String(user.createdAt).substr(0, 10)}
                     </div>
                   </div>

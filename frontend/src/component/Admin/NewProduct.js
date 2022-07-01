@@ -1,17 +1,31 @@
-import React, { Fragment, useEffect, useState } from "react";
-import "./newProduct.css";
-import { useSelector, useDispatch } from "react-redux";
-import { clearErrors, createProduct } from "../../actions/productAction";
-import { useAlert } from "react-alert";
-import { Button } from "@material-ui/core";
-import MetaData from "../layout/MetaData";
-import AccountTreeIcon from "@material-ui/icons/AccountTree";
-import DescriptionIcon from "@material-ui/icons/Description";
-import StorageIcon from "@material-ui/icons/Storage";
-import SpellcheckIcon from "@material-ui/icons/Spellcheck";
-import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
-import SideBar from "./Sidebar";
-import { NEW_PRODUCT_RESET } from "../../constants/productConstants";
+import React, { Fragment, useEffect, useState } from 'react';
+import './newProduct.css';
+import { useSelector, useDispatch } from 'react-redux';
+import { clearErrors, createProduct } from '../../actions/productAction';
+import { useAlert } from 'react-alert';
+import { Button } from '@material-ui/core';
+import MetaData from '../layout/MetaData';
+import AccountTreeIcon from '@material-ui/icons/AccountTree';
+import DescriptionIcon from '@material-ui/icons/Description';
+import StorageIcon from '@material-ui/icons/Storage';
+import SpellcheckIcon from '@material-ui/icons/Spellcheck';
+import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
+import SideBar from './Sidebar';
+import { NEW_PRODUCT_RESET } from '../../constants/productConstants';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faCartShopping,
+  faFileLines,
+  faUser,
+  faPen,
+  faBagShopping,
+  faBoxOpen,
+  faList,
+  faIndianRupeeSign,
+  faFileSignature,
+  faInputText
+} from '@fortawesome/free-solid-svg-icons';
 
 const NewProduct = ({ history }) => {
   const dispatch = useDispatch();
@@ -19,22 +33,23 @@ const NewProduct = ({ history }) => {
 
   const { loading, error, success } = useSelector((state) => state.newProduct);
 
-  const [name, setName] = useState("");
+  const [name, setName] = useState('');
   const [price, setPrice] = useState(0);
-  const [description, setDescription] = useState("");
-  const [category, setCategory] = useState("");
+  const [description, setDescription] = useState('');
+  const [category, setCategory] = useState('');
   const [Stock, setStock] = useState(0);
   const [images, setImages] = useState([]);
   const [imagesPreview, setImagesPreview] = useState([]);
 
   const categories = [
-    "Laptop",
-    "Footwear",
-    "Bottom",
-    "Tops",
-    "Attire",
-    "Camera",
-    "SmartPhones",
+    'Butter Cake',
+    'Sponge Cake',
+    'Genoise Cake',
+    'Biscuit Cake',
+    'Chiffon Cake',
+    'Baked Flourless Cake',
+    'Unbaked Flourless Cake',
+    'Red Velvet Cake',
   ];
 
   useEffect(() => {
@@ -44,8 +59,8 @@ const NewProduct = ({ history }) => {
     }
 
     if (success) {
-      alert.success("Product Created Successfully");
-      history.push("/admin/dashboard");
+      alert.success('Product Created Successfully');
+      history.push('/admin/dashboard');
       dispatch({ type: NEW_PRODUCT_RESET });
     }
   }, [dispatch, alert, error, history, success]);
@@ -55,14 +70,14 @@ const NewProduct = ({ history }) => {
 
     const myForm = new FormData();
 
-    myForm.set("name", name);
-    myForm.set("price", price);
-    myForm.set("description", description);
-    myForm.set("category", category);
-    myForm.set("Stock", Stock);
+    myForm.set('name', name);
+    myForm.set('price', price);
+    myForm.set('description', description);
+    myForm.set('category', category);
+    myForm.set('Stock', Stock);
 
     images.forEach((image) => {
-      myForm.append("images", image);
+      myForm.append('images', image);
     });
     dispatch(createProduct(myForm));
   };
@@ -89,53 +104,59 @@ const NewProduct = ({ history }) => {
 
   return (
     <Fragment>
-      <MetaData title="Create Product" />
-      <div className="dashboard">
+      <MetaData title='Create Product' />
+      <div className='dashboard'>
         <SideBar />
-        <div className="newProductContainer">
+        <div className='newProductContainer'>
           <form
-            className="createProductForm"
-            encType="multipart/form-data"
+            className='createProductForm'
+            encType='multipart/form-data'
             onSubmit={createProductSubmitHandler}
           >
             <h1>Create Product</h1>
 
             <div>
-              <SpellcheckIcon />
+            <FontAwesomeIcon icon={faFileSignature} className='fa-solid fa-lg' />
               <input
-                type="text"
-                placeholder="Product Name"
+                type='text'
+                placeholder='Product Name'
                 required
                 value={name}
+                style={{ margin: '8px' }}
                 onChange={(e) => setName(e.target.value)}
               />
             </div>
             <div>
-              <AttachMoneyIcon />
+            <FontAwesomeIcon icon={faIndianRupeeSign} className='fa-reagular fa-lg' />
               <input
-                type="number"
-                placeholder="Price"
+                type='number'
+                placeholder='Price'
                 required
+                style={{ margin: '8px' }}
                 onChange={(e) => setPrice(e.target.value)}
               />
             </div>
 
             <div>
-              <DescriptionIcon />
+              <FontAwesomeIcon icon={faPen} className='fa-reagular fa-lg' />
 
               <textarea
-                placeholder="Product Description"
+                placeholder='Product Description'
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                cols="30"
-                rows="1"
+                cols='30'
+                style={{ margin: '8px' }}
+                rows='1'
               ></textarea>
             </div>
 
             <div>
-              <AccountTreeIcon />
-              <select onChange={(e) => setCategory(e.target.value)}>
-                <option value="">Choose Category</option>
+            <FontAwesomeIcon icon={faList} className='fa-reagular fa-lg' />
+              <select
+                onChange={(e) => setCategory(e.target.value)}
+                style={{ margin: '8px' }}
+              >
+                <option value=''>Choose Category</option>
                 {categories.map((cate) => (
                   <option key={cate} value={cate}>
                     {cate}
@@ -145,34 +166,36 @@ const NewProduct = ({ history }) => {
             </div>
 
             <div>
-              <StorageIcon />
+              <FontAwesomeIcon icon={faBoxOpen} className='fa-reagular fa-lg' />
+
               <input
-                type="number"
-                placeholder="Stock"
+                type='number'
+                placeholder='Stock'
                 required
                 onChange={(e) => setStock(e.target.value)}
+                style={{ margin: '8px' }}
               />
             </div>
 
-            <div id="createProductFormFile">
+            <div id='createProductFormFile'>
               <input
-                type="file"
-                name="avatar"
-                accept="image/*"
+                type='file'
+                name='avatar'
+                accept='image/*'
                 onChange={createProductImagesChange}
                 multiple
               />
             </div>
 
-            <div id="createProductFormImage">
+            <div id='createProductFormImage'>
               {imagesPreview.map((image, index) => (
-                <img key={index} src={image} alt="Product Preview" />
+                <img key={index} src={image} alt='Product Preview' />
               ))}
             </div>
 
             <Button
-              id="createProductBtn"
-              type="submit"
+              id='createProductBtn'
+              type='submit'
               disabled={loading ? true : false}
             >
               Create
