@@ -44,11 +44,7 @@ const NewProduct = ({ history }) => {
   const categories = [
     'Butter Cake',
     'Sponge Cake',
-    'Genoise Cake',
-    'Biscuit Cake',
-    'Chiffon Cake',
     'Baked Flourless Cake',
-    'Unbaked Flourless Cake',
     'Red Velvet Cake',
   ];
 

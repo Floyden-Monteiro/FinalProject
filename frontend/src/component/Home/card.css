@@ -2,12 +2,12 @@
 .container1{
     background: white;
     cursor: pointer;
-    border-radius: 15px;
+    border-radius: 10px;
     position: relative;
     padding: 25px 30px;
  
     color: black;
-    margin: 10px;
+    /* margin: 10px; */
     font-family: 'Nunito Sans', sans-serif;
 }
 .container1::after{

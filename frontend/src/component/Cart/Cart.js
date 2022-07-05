@@ -6,15 +6,19 @@ import { addItemsToCart, removeItemsFromCart } from '../../actions/cartAction';
 import { Typography } from '@material-ui/core';
 import RemoveShoppingCartIcon from '@material-ui/icons/RemoveShoppingCart';
 import { Link } from 'react-router-dom';
+import { useAlert } from "react-alert";
 
 const Cart = ({ history }) => {
   const dispatch = useDispatch();
   const { cartItems } = useSelector((state) => state.cart);
+  const alert = useAlert();
 
   const increaseQuantity = (id, quantity, stock) => {
     if (quantity < 3) {
       const newQty = quantity + 1;
       dispatch(addItemsToCart(id, newQty));
+    } else{
+      alert.show("Please Contact us for more than 3KG")
     }
   };
 
@@ -27,7 +31,9 @@ const Cart = ({ history }) => {
   };
 
   const deleteCartItems = (id) => {
+    alert.show("Succesfully remove from cart")
     dispatch(removeItemsFromCart(id));
+    
   };
 
   const checkoutHandler = () => {

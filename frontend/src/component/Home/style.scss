@@ -1,0 +1,254 @@
+$wearable-only: "(max-width: 319px)"; // not required but nice to know!
+$micro-only: "only screen and (min-width: 320px) and (max-width: 374px)";
+$mini-only: "only screen and (min-width: 375px) and (max-width: 424px)";
+$xs-only: "only screen and (min-width: 425px) and (max-width: 767px)";
+$sm-only: "only screen and (min-width: 768px) and (max-width: 991px)";
+$md-only: "only screen and (min-width: 992px) and (max-width: 1199px)";
+$lg-only: "only screen and (min-width: 1200px) and (max-width: 1919px)";
+$xs-excl: "only screen and (max-width: 767px)";
+
+$xs-up: "only screen and (min-width: 320px)";
+$sm-up: "only screen and (min-width: 768px)";
+$md-up: "only screen and (min-width: 992px)";
+$lg-up: "only screen and (min-width: 1200px)";
+$xl-up: "only screen and (min-width: 1920px)";
+
+// === COLORS =================================================================
+$white: #f9f6f0;
+$black: #090600;
+$tiri-tan: #f4e3d7;
+$tiri-terra: #e4c0a7;
+$tiri-brown: #784421;
+$tiri-gold: #d4aa00;
+$tiri-red: #c83737;
+$tiri-orange: #ff9955;
+
+// === BASICS =================================================================
+$rem-font-size-base: 10;
+$em-font-size-base: 14;
+$font-size-base: rem(14);
+$font-size-large: rem(17);
+$font-size-headline: rem(24);
+$line-height-base: 1.7;
+
+$max: 10;
+$min: 5;
+$fold-radius: 80;
+
+@mixin box-shadow($direction: "br", $offset: 2, $intensity: 10, $reduction: -2, $color: $black) {
+    $shadow-off: rem($offset) rem($offset);
+
+    @if $direction == "t" { $shadow-off: 0 rem(-$offset);
+    } @else if $direction == "r" { $shadow-off: rem($offset) 0;
+    } @else if $direction == "b" { $shadow-off: 0 rem($offset);
+    } @else if $direction == "l" { $shadow-off: rem(-$offset) 0;
+    } @else if $direction == "tl" { $shadow-off: rem(-$offset) rem(-$offset);
+    } @else if $direction == "tr" { $shadow-off: rem($offset) rem(-$offset);
+    } @else if $direction == "bl" { $shadow-off: rem(-$offset) rem($offset);
+    }
+    box-shadow: $shadow-off rem($intensity) rem($reduction) $color;
+}
+
+@mixin gold-border($border-width: 1, $border-style: solid) {
+    border-width: rem($border-width);
+    border-style: $border-style;
+    -webkit-border-image: -webkit-gradient(linear, 0 0, 0 100%, from($tiri-gold), stop($white, 38%), stop($tiri-gold, 60%), stop($white, 86%), stop($white, 89%), stop($tiri-gold 90%), to($tiri-gold)) 2 repeat;
+    -webkit-border-image: -webkit-linear-gradient(top, $tiri-gold 0%, $white 38%, $tiri-gold 60%, $white 86%, $white 89%, $tiri-gold 90%, $tiri-gold 100%) 2 repeat;
+    -moz-border-image: -moz-linear-gradient(top, $tiri-gold 0%, $white 38%, $tiri-gold 60%, $white 86%, $white 89%, $tiri-gold 90%, $tiri-gold 100%) 2 repeat;
+    border-image: linear-gradient(to bottom, $tiri-gold 0%, $white 38%, $tiri-gold 60%, $white 86%, $white 89%, $tiri-gold 90%, $tiri-gold 100%) 2 repeat;
+}
+
+@mixin glassy($deg: 135) {
+    background-image: -moz-linear-gradient(-45deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.8) 25%, rgba(255,255,255,0.2) 35%, rgba(255,255,255,0.9) 40%, rgba(255,255,255,0.2) 51%, rgba(255,255,255,0.3) 52%, rgba(255,255,255,0.6) 70%, rgba(255,255,255,0.7) 78%, rgba(255,255,255,0.2) 100%);
+    background-image: -webkit-linear-gradient(-45deg, rgba(255,255,255,0.2) 0%,rgba(255,255,255,0.8) 25%,rgba(255,255,255,0.2) 35%,rgba(255,255,255,0.9) 40%,rgba(255,255,255,0.2) 51%,rgba(255,255,255,0.3) 52%,rgba(255,255,255,0.6) 70%,rgba(255,255,255,0.7) 78%,rgba(255,255,255,0.2) 100%);
+    background-image: linear-gradient(135deg, rgba(255,255,255,0.2) 0%,rgba(255,255,255,0.8) 25%,rgba(255,255,255,0.2) 35%,rgba(255,255,255,0.9) 40%,rgba(255,255,255,0.2) 51%,rgba(255,255,255,0.3) 52%,rgba(255,255,255,0.6) 70%,rgba(255,255,255,0.7) 78%,rgba(255,255,255,0.2) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#00000000',GradientType=1 );
+    @include box-shadow('b', 0, 2, -1);
+}
+$tiri-hand: 'Bilbo Swash Caps', 'Monotype Cursiva', cursive;
+$tiri-serif: 'Cormorant SC', "Book Antiqua", "Times New Roman", "Times", serif;
+$tiri-sans: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+@mixin tiri-hand() {
+    font-family: $tiri-hand;
+}
+@mixin tiri-serif() {
+    font-family: $tiri-serif;
+}
+@mixin tiri-sans($font-weight: 300) {
+    font-family: $tiri-sans;
+    font-weight: $font-weight;
+}
+// calculates em units
+
+@function rem($target, $unit: "rem") {
+    @if unit($target) != "" {
+        @warn $unit+": units are not allowed for the target value";
+    }
+    @if $target == 0 {
+        @return 0;
+    } @else {
+        @if $unit == "rem" {
+            @return $target / $rem-font-size-base + rem;
+        } @else {
+            @return $target / $em-font-size-base + em;
+        }
+    }
+}
+
+%glassy {
+	background-image: linear-gradient(
+		135deg,
+		rgba(255, 255, 255, 0.1) 0%,
+		rgba(255, 255, 255, 0.2) 25%,
+		rgba(255, 255, 255, 0.2) 35%,
+		rgba(255, 255, 255, 0.3) 40%,
+		rgba(255, 255, 255, 0.3) 51%,
+		rgba(255, 255, 255, 0.3) 52%,
+		rgba(255, 255, 255, 0.1) 70%,
+		rgba(255, 255, 255, 0.1) 78%,
+		rgba(255, 255, 255, 0.2) 100%
+	);
+	box-shadow: inset 0 0 5px 0 rgba(white, 0.25);
+}
+
+// html { box-sizing: border-box; }
+// * { box-sizing: inherit }
+// body {
+// 	background-color: #e5e5e5;
+// 	background-image:
+// 		repeating-linear-gradient(to right, rgba(white,0), rgba(white,0) calc(5mm - 1px), #ccc calc(5mm - 1px), #ccc 5mm),
+// 		repeating-linear-gradient(to bottom, rgba(white,0), rgba(white,0) calc(5mm - 1px), #ccc calc(5mm - 1px), #ccc 5mm),
+// 		;
+// 	padding: CLAMP(2rem, 10vh + .25rem, 20rem) CLAMP(2rem, 10vw + 0.5rem, 30rem);
+// }
+
+picture, img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.tiles {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(#{rem(250)}, 1fr));
+	justify-content: center;
+	place-items: stretch center;
+	align-items: stretch;
+	padding: 0 0 rem(70);
+	.tile {
+		position: relative;
+		margin: auto rem(15) rem(40);
+		transition: all .5s;
+		transform-origin: 50% rem(-35);
+		
+		.tile-content, .tile-head, .tile-body, .tile-text {
+			display: block;
+		}
+		
+		&-content {
+			position: relative;
+			background-color: #fff;
+			background-image: linear-gradient(135deg, #fff, $tiri-tan 98%);
+			transform: translate3d(0,0,0);
+			@include box-shadow('b');
+			max-width: rem(250);
+			padding: rem(8);
+			text-align: center;
+			border-radius: 3px;
+			cursor: pointer;
+			transition: all .5s;
+			overflow: hidden;
+
+			&:hover {
+				.tile-image > img {
+					filter: none;
+				}
+			}
+		}
+		&-headline {
+			@include tiri-hand();
+			font-size: clamp(1.5rem, 1vw + 1rem, 3rem);
+			position: absolute;
+			top: 50%;
+			z-index: 2;
+			display: block;
+			text-align: left;
+			padding: rem(5) rem(50) rem(5) rem(25);
+			// @include glassy();
+			transform: translateY(-50%) rotate(-25deg);
+			color: $white;
+			mix-blend-mode: luminosity;
+			text-shadow: rem(1) rem(1) 0px $black;
+		}
+		&-image {
+			position: relative;
+			border: 1px inset white;
+			padding-top: 100%;
+			> img {
+				border: 1px solid $white;
+				border-radius: 3px;
+				filter: sepia(100%);
+				position: absolute;
+				top: 0;
+			}
+			&:before {
+				content: '';
+				display: block;
+				position: absolute;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				@extend %glassy;
+				z-index: 3;
+				opacity: 0.5;
+				box-shadow: inset 0 0 rem(10) rem(2) #090603;
+			}
+		}
+		&-text {
+			padding: 1rem 2rem;
+			margin-top: 1rem;
+		}
+		&:before {
+			@extend %glassy;
+			display: block;
+			content: '';
+			position: absolute;
+			left: 50%;
+			border: 1px solid rgba(255,255,255,.7);
+			width: 12mm;
+			z-index: 10;
+			transform: translateX(-50%);
+		}
+		@for $x from 1 through 16 {
+			&:nth-of-type(#{$x}) {
+				top: rem(random(30)+40);
+				&:hover {
+					z-index: 8;
+				}
+				$sticky: rem(random(15)-35);
+				$rotate: random($max) - $min;
+				transform: rotateZ($rotate + deg);
+				transform-origin: 50% #{$sticky};
+				&:before {
+					height: rem(random(30)+40);
+					top: #{$sticky};
+				}
+				&:hover, &:focus {
+					$h-rotate: random($max) - $min;
+					$i: 1;
+					@while $h-rotate == $rotate or $h-rotate == $rotate + 1 or $h-rotate == $rotate - 1 {
+						$h-rotate: random($max) - $min;
+						$i: $i +1;
+					}
+					transform: rotateZ($h-rotate + deg) + " /* hover rotation " + $i + "x berechnet */";
+					.tile-content {
+						@include box-shadow('b', 20, 50, -25);
+					}
+				}
+			}
+		}
+	}
+}

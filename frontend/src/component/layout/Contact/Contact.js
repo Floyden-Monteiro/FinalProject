@@ -35,8 +35,8 @@ const Contact = () => {
                 <div class='app-form-group message'>
                   <input class='app-form-control' placeholder='MESSAGE' />
                 </div>
-                <div class='app-form-group buttons'>
-                  <button class='app-form-button'>CANCEL</button>
+                <div class='app-form-group butto'>
+                  <button class='app-form-button'style={{paddingTop:"50px", paddingRight:"20px"}} >CANCEL</button>
                   <a
                     class='app-form-button'
                     href='mailto:aarwim837@gmail.com'

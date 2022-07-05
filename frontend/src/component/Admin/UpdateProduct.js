@@ -38,13 +38,10 @@ const UpdateProduct = ({ history, match }) => {
   const [imagesPreview, setImagesPreview] = useState([]);
 
   const categories = [
-    "Laptop",
-    "Footwear",
-    "Bottom",
-    "Tops",
-    "Attire",
-    "Camera",
-    "SmartPhones",
+    'Butter Cake',
+    'Sponge Cake',
+    'Baked Flourless Cake',
+    'Red Velvet Cake',
   ];
 
   const productId = match.params.id;
@@ -125,19 +122,19 @@ const UpdateProduct = ({ history, match }) => {
   };
 
   return (
-    <Fragment>
+    <Fragment >
       <MetaData title="Create Product" />
-      <div className="dashboard">
+      <div className="dashboard" >
         <SideBar />
-        <div className="newProductContainer">
+        <div className="newProductContainer" style={{padding:"0px"}}>
           <form
             className="createProductForm"
             encType="multipart/form-data"
             onSubmit={updateProductSubmitHandler}
           >
-            <h1>Create Product</h1>
+            <h1>Update Product</h1>
 
-            <div>
+            <div style={{padding:"10px"}} >
               <SpellcheckIcon />
               <input
                 type="text"
@@ -147,7 +144,7 @@ const UpdateProduct = ({ history, match }) => {
                 onChange={(e) => setName(e.target.value)}
               />
             </div>
-            <div>
+            <div style={{padding:"10px"}}>
               <AttachMoneyIcon />
               <input
                 type="number"
@@ -158,7 +155,7 @@ const UpdateProduct = ({ history, match }) => {
               />
             </div>
 
-            <div>
+            <div style={{padding:"10px"}}>
               <DescriptionIcon />
 
               <textarea
@@ -170,7 +167,7 @@ const UpdateProduct = ({ history, match }) => {
               ></textarea>
             </div>
 
-            <div>
+            <div style={{padding:"10px"}}>
               <AccountTreeIcon />
               <select
                 value={category}
@@ -185,7 +182,7 @@ const UpdateProduct = ({ history, match }) => {
               </select>
             </div>
 
-            <div>
+            <div style={{padding:"10px"}}>
               <StorageIcon />
               <input
                 type="number"

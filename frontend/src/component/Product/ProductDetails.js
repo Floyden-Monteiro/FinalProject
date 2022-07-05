@@ -58,6 +58,8 @@ const ProductDetails = ({ match }) => {
       // const qty = quantity + 1;
       // setQuantity(qty);
       setQuantity(quantity + 1);
+    }else{
+      alert.show("Please Contact us for more than 3KG")
     }
   };
 
