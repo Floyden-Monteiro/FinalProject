@@ -5,26 +5,17 @@ import { clearErrors, createProduct } from '../../actions/productAction';
 import { useAlert } from 'react-alert';
 import { Button } from '@material-ui/core';
 import MetaData from '../layout/MetaData';
-import AccountTreeIcon from '@material-ui/icons/AccountTree';
-import DescriptionIcon from '@material-ui/icons/Description';
-import StorageIcon from '@material-ui/icons/Storage';
-import SpellcheckIcon from '@material-ui/icons/Spellcheck';
-import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
+
 import SideBar from './Sidebar';
 import { NEW_PRODUCT_RESET } from '../../constants/productConstants';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faCartShopping,
-  faFileLines,
-  faUser,
   faPen,
-  faBagShopping,
   faBoxOpen,
   faList,
   faIndianRupeeSign,
   faFileSignature,
-  faInputText
 } from '@fortawesome/free-solid-svg-icons';
 
 const NewProduct = ({ history }) => {
@@ -45,7 +36,7 @@ const NewProduct = ({ history }) => {
     'Butter Cake',
     'Sponge Cake',
     'Baked Flourless Cake',
-    'Red Velvet Cake',
+    ''
   ];
 
   useEffect(() => {
@@ -112,7 +103,10 @@ const NewProduct = ({ history }) => {
             <h1>Create Product</h1>
 
             <div>
-            <FontAwesomeIcon icon={faFileSignature} className='fa-solid fa-lg' />
+              <FontAwesomeIcon
+                icon={faFileSignature}
+                className='fa-solid fa-lg'
+              />
               <input
                 type='text'
                 placeholder='Product Name'
@@ -123,7 +117,10 @@ const NewProduct = ({ history }) => {
               />
             </div>
             <div>
-            <FontAwesomeIcon icon={faIndianRupeeSign} className='fa-reagular fa-lg' />
+              <FontAwesomeIcon
+                icon={faIndianRupeeSign}
+                className='fa-reagular fa-lg'
+              />
               <input
                 type='number'
                 placeholder='Price'
@@ -147,7 +144,7 @@ const NewProduct = ({ history }) => {
             </div>
 
             <div>
-            <FontAwesomeIcon icon={faList} className='fa-reagular fa-lg' />
+              <FontAwesomeIcon icon={faList} className='fa-reagular fa-lg' />
               <select
                 onChange={(e) => setCategory(e.target.value)}
                 style={{ margin: '8px' }}

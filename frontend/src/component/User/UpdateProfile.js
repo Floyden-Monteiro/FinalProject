@@ -2,15 +2,14 @@ import React, { Fragment, useState, useEffect } from 'react';
 import './UpdateProfile.css';
 import Loader from '../layout/Loader/Loader';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
-import FaceIcon from '@material-ui/icons/Face';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearErrors, updateProfile, loadUser } from '../../actions/userAction';
 import { useAlert } from 'react-alert';
 import { UPDATE_PROFILE_RESET } from '../../constants/userConstants';
 import MetaData from '../layout/MetaData';
-import Header from '../layout/Header/Header';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleUser, faPen } from '@fortawesome/free-solid-svg-icons';
+import { faCircleUser } from '@fortawesome/free-solid-svg-icons';
 
 const UpdateProfile = ({ history }) => {
   const dispatch = useDispatch();

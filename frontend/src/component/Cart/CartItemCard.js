@@ -21,8 +21,6 @@ const CartItemCard = ({ item, deleteCartItems }) => {
           {item.name}
           {`   ₹${item.price}`}
         </Link>
-
-        {/* <span style={{paddingLeft:"0px"}}>{`Price: ₹${item.price}`}</span> */}
         <p
           style={{ paddingLeft: '150px' }}
           onClick={() => deleteCartItems(item.product)}

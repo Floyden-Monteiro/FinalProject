@@ -1,25 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faCircleUser,
-  faCartShopping,
-  faBagShopping,
-} from '@fortawesome/free-solid-svg-icons';
+import { faCircleUser, faBagShopping } from '@fortawesome/free-solid-svg-icons';
 import { useSelector } from 'react-redux';
 import UserOptions from './UserOptions';
-import Fade from 'react-reveal/Fade';
-
 
 const Header = () => {
   const { isAuthenticated, user } = useSelector((state) => state.user);
   return (
     <>
-    <nav
-      className='navbar navbar-expand-lg  navbar-dark '
-      style={{ backgroundColor: '	transperent' }}
-    >
-   
+      <nav
+        className='navbar navbar-expand-lg  navbar-dark '
+        style={{ backgroundColor: '	transperent' }}
+      >
         <div className='container-fluid' style={{ border: 'none' }}>
           <Link
             className='navbar-brand'
@@ -68,7 +61,6 @@ const Header = () => {
               </li>
             </ul>
             <ul className='navbar-nav ms-auto mb-2 mb-lg-0'>
-      
               <li className='nav-item'>
                 <Link className='nav-link active' to='/cart'>
                   <FontAwesomeIcon
@@ -97,21 +89,8 @@ const Header = () => {
             </ul>
           </div>
         </div>
-     
-    </nav>
-
-
-
-
-     
-
-        </>
-
-
-
-
-
-
+      </nav>
+    </>
   );
 };
 

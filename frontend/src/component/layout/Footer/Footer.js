@@ -1,14 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Container, Row, Col, ListGroup, ListGroupItem } from 'reactstrap';
 
 import './Footer.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faCircleUser,
-  faCartShopping,
-  faBagShopping,
-} from '@fortawesome/free-solid-svg-icons';
 
 const Footer = () => {
   return (

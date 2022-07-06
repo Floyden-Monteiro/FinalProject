@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from 'react';
-import { DataGrid } from '@material-ui/data-grid';
+
 import './productList.css';
 import { useSelector, useDispatch } from 'react-redux';
 import {
@@ -51,58 +51,6 @@ const ProductList = ({ history }) => {
     dispatch(getAdminProduct());
   }, [dispatch, alert, error, deleteError, history, isDeleted]);
 
-  const columns = [
-    { field: 'id', headerName: 'Product ID', minWidth: 200, flex: 0.5 },
-
-    {
-      field: 'name',
-      headerName: 'Name',
-      // minWidth: 150,
-      flex: 0.3,
-    },
-    {
-      field: 'stock',
-      headerName: 'Stock',
-      type: 'number',
-      // minWidth: 150,
-      flex: 0.3,
-    },
-
-    {
-      field: 'price',
-      headerName: 'Price',
-      type: 'number',
-      // minWidth: 270,
-      flex: 0.5,
-    },
-
-    {
-      field: 'actions',
-      flex: 0.3,
-      headerName: 'Actions',
-      // minWidth: 150,
-      type: 'number',
-      sortable: false,
-      renderCell: (params) => {
-        return (
-          <Fragment>
-            <Link to={`/admin/product/${params.getValue(params.id, 'id')}`}>
-              <EditIcon />
-            </Link>
-
-            <Button
-              onClick={() =>
-                deleteProductHandler(params.getValue(params.id, 'id'))
-              }
-            >
-              <DeleteIcon />
-            </Button>
-          </Fragment>
-        );
-      },
-    },
-  ];
-
   const rows = [];
 
   products &&
@@ -121,20 +69,7 @@ const ProductList = ({ history }) => {
 
       <SideBar />
 
-      {/* <div className="dashboard">
-        <div className="productListContainer">
-          <h6 id="productListHeading">ALL PRODUCTS</h6>
-
-          <DataGrid
-            rows={rows}
-            columns={columns}
-            pageSize={10}
-            disableSelectionOnClick
-            className="productListTable"
-            autoHeight
-          />
-        </div>
-      </div> */}
+      
 
       <div class='projects mb-4' style={{ marginLeft: '210px', width: '84%' }}>
         <div class='projects-inner'>
@@ -167,7 +102,6 @@ const ProductList = ({ history }) => {
                     <p className='text'>{item.Stock}</p>
                   </td>
 
-               
                   <td>
                     <p>{item.price}</p>
                   </td>
@@ -179,7 +113,7 @@ const ProductList = ({ history }) => {
 
                     <Button onClick={() => deleteProductHandler(item._id)}>
                       <DeleteIcon />
-                    </Button> 
+                    </Button>
                   </td>
                 </tr>
               ))}

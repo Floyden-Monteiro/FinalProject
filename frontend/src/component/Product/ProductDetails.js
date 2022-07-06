@@ -23,7 +23,6 @@ import {
 } from '@material-ui/core';
 import { Rating } from '@material-ui/lab';
 import { NEW_REVIEW_RESET } from '../../constants/productConstants';
-// import { myOrders } from '../../actions/orderAction';
 
 const ProductDetails = ({ match }) => {
   const dispatch = useDispatch();
@@ -33,8 +32,6 @@ const ProductDetails = ({ match }) => {
     (state) => state.productDetails
   );
 
-  // const { orders } = useSelector((state) => state.myOrders);
-  // console.log(orders);
   const { success, error: reviewError } = useSelector(
     (state) => state.newReview
   );
@@ -52,22 +49,14 @@ const ProductDetails = ({ match }) => {
   const [comment, setComment] = useState('');
 
   const increaseQuantity = () => {
-    // if (product.Stock <= quantity) return;
-
     if (quantity < 3) {
-      // const qty = quantity + 1;
-      // setQuantity(qty);
       setQuantity(quantity + 1);
-    }else{
-      alert.show("Please Contact us for more than 3KG")
+    } else {
+      alert.show('Please Contact us for more than 3KG');
     }
   };
 
   const decreaseQuantity = () => {
-    // if (1 >= quantity) return;
-
-    // const qty = quantity - 1;
-    // setQuantity(qty);
     if (quantity > 1) {
       setQuantity(quantity - 1);
     }
@@ -176,50 +165,7 @@ const ProductDetails = ({ match }) => {
                 <Rating {...options} />
               </div>
             </div>
-            {/*
-            <div>
-              <div className="detailsBlock-1">
-                <h2>{product.name}</h2>
-                <p>Product # {product._id}</p>
-              </div>
-              <div className="detailsBlock-2">
-                <span className="detailsBlock-2-span">
-                  {" "}
-                  ({product.numOfReviews} Reviews)
-                </span>
-              </div>
-              <div className="detailsBlock-3">
-                <h1>{`₹${product.price}`}</h1>
-                <div className="detailsBlock-3-1">
-                  <div className="detailsBlock-3-1-1">
-                    <button onClick={decreaseQuantity}>-</button>
-                    <input readOnly type="number" value={quantity} />
-                    <button onClick={increaseQuantity}>+</button>
-                  </div>
-                  <button
-                    disabled={product.Stock < 1 ? true : false}
-                    onClick={addToCartHandler}
-                  >
-                    Add to Cart
-                  </button>
-                </div>
-
-                <p>
-                  Status:
-                  <b className={product.Stock < 1 ? "redColor" : "greenColor"}>
-                    {product.Stock < 1 ? "OutOfStock" : "InStock"}
-                  </b>
-                </p>
-              </div>
-
-              <div className="detailsBlock-4">
-                Description : <p>{product.description}</p>
-              </div>
-
-              <button onClick={submitReviewToggle} className="submitReview">
-                Submit Review
-              </button>
-            </div>*/}
+           
           </div>
 
           <h3 className='reviewsHeading'>REVIEWS</h3>

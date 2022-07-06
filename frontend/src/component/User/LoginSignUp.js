@@ -2,15 +2,13 @@ import React, { Fragment, useRef, useState, useEffect } from 'react';
 import './LoginSignUp.css';
 import Loader from '../layout/Loader/Loader';
 import { Link } from 'react-router-dom';
-import MailOutlineIcon from '@material-ui/icons/MailOutline';
-import LockOpenIcon from '@material-ui/icons/LockOpen';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faKey, faUser } from '@fortawesome/free-solid-svg-icons';
 
-import FaceIcon from '@material-ui/icons/Face';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { clearErrors, login, register } from '../../actions/userAction';
-import { useAlert, positions, transitions } from 'react-alert';
+import { useAlert, positions } from 'react-alert';
 
 import './css/main.css';
 import './css/util.css';
@@ -127,30 +125,7 @@ const LoginSignUp = ({ history, location }) => {
                 </div>
                 <button ref={switcherTab}></button>
               </div>
-              {/* <form className='loginForm' ref={loginTab} onSubmit={loginSubmit}>
-                <div className='loginEmail'>
-                  <MailOutlineIcon />
-                  <input
-                    type='email'
-                    placeholder='Email'
-                    required
-                    value={loginEmail}
-                    onChange={(e) => setLoginEmail(e.target.value)}
-                  />
-                </div>
-                <div className='loginPassword'>
-                  <LockOpenIcon />
-                  <input
-                    type='password'
-                    placeholder='Password'
-                    required
-                    value={loginPassword}
-                    onChange={(e) => setLoginPassword(e.target.value)}
-                  />
-                </div>
-                <Link to='/password/forgot'>Forget Password ?</Link>
-                <input type='submit' value='Login' className='loginBtn' />
-              </form> */}
+              
 
               <form
                 className=' loginForm validate-form'
@@ -218,57 +193,7 @@ const LoginSignUp = ({ history, location }) => {
                 </div>
               </form>
 
-              {/* <form
-                className='signUpForm'
-                ref={registerTab}
-                encType='multipart/form-data'
-                onSubmit={registerSubmit}
-              >
-                <div className='signUpName'>
-                  <FaceIcon />
-                  <input
-                    type='text'
-                    placeholder='Name'
-                    required
-                    name='name'
-                    value={name}
-                    onChange={registerDataChange}
-                  />
-                </div>
-                <div className='signUpEmail'>
-                  <MailOutlineIcon />
-                  <input
-                    type='email'
-                    placeholder='Email'
-                    required
-                    name='email'
-                    value={email}
-                    onChange={registerDataChange}
-                  />
-                </div>
-                <div className='signUpPassword'>
-                  <LockOpenIcon />
-                  <input
-                    type='password'
-                    placeholder='Password'
-                    required
-                    name='password'
-                    value={password}
-                    onChange={registerDataChange}
-                  />
-                </div>
-
-                <div id='registerImage'>
-                  <img src={avatarPreview} alt='Avatar Preview' />
-                  <input
-                    type='file'
-                    name='avatar'
-                    accept='image/*'
-                    onChange={registerDataChange}
-                  />
-                </div>
-                <input type='submit' value='Register' className='signUpBtn' />
-              </form> */}
+              
 
               <form
                 className='signUpForm validate-form'
@@ -284,8 +209,8 @@ const LoginSignUp = ({ history, location }) => {
                     className='input100'
                     type='text'
                     name='name'
-                    pattern="[A-Za-z]"
                     required
+                    pattern="[A-Za-z]+"
                     placeholder='  Name'
                     value={name}
                     onChange={registerDataChange}

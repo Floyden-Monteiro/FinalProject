@@ -11,16 +11,7 @@ const ProductCard = ({ product }) => {
   };
   return (
     <Link to={`/product/${product._id}`}>
-      {/* <img src={product.images[0].url} alt={product.name} />
-      <p>{product.name}</p>
-      <div>
-        <Rating {...options} />{" "}
-        <span className="productCardSpan">
-          {" "}
-          ({product.numOfReviews} Reviews)
-        </span>
-      </div>
-      <span>{`₹${product.price}`}</span> */}
+      
 
       <div class='container'>
         <div class='card'>
@@ -36,7 +27,7 @@ const ProductCard = ({ product }) => {
                 <Rating {...options} />
             </div>
 
-            <a href=''>{`₹${product.price}`}</a>
+            <a href='/'>{`₹${product.price}`}</a>
           </div>
         </div>
       </div>

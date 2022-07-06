@@ -9,7 +9,7 @@ import MetaData from '../layout/MetaData';
 import LockOpenIcon from '@material-ui/icons/LockOpen';
 import LockIcon from '@material-ui/icons/Lock';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
-import Header from '../layout/Header/Header';
+
 
 const UpdatePassword = ({ history }) => {
   const dispatch = useDispatch();

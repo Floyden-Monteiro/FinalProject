@@ -4,7 +4,6 @@ import Header from './component/layout/Header/Header.js';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import WebFont from 'webfontloader';
 import React from 'react';
-import Footer from './component/layout/Footer/Footer';
 import Home from './component/Home/Home';
 import ProductDetails from './component/Product/ProductDetails';
 import Products from './component/Product/Products';
@@ -12,8 +11,6 @@ import Search from './component/Product/Search';
 import LoginSignUp from './component/User/LoginSignUp';
 import store from './store';
 import { loadUser } from './actions/userAction';
-import UserOptions from './component/layout/Header/UserOptions';
-import { useSelector } from 'react-redux';
 import Profile from './component/User/Profile';
 import ProtectedRoute from './component/Route/ProtectedRoute';
 import UpdateProfile from './component/User/UpdateProfile';
@@ -41,11 +38,8 @@ import UpdateUser from './component/Admin/UpdateUser';
 import ProductReviews from './component/Admin/ProductReviews';
 import Contact from './component/layout/Contact/Contact';
 import About from './component/layout/About/About';
-import NotFound from './component/layout/Not Found/NotFound';
 
 function App() {
-  const { isAuthenticated, user } = useSelector((state) => state.user);
-
   const [stripeApiKey, setStripeApiKey] = useState('');
 
   async function getStripeApiKey() {
@@ -66,13 +60,10 @@ function App() {
     getStripeApiKey();
   }, []);
 
-  
-
   return (
     <>
       <Router>
-      <Header />
-        
+        <Header />
 
         {stripeApiKey && (
           <Elements stripe={loadStripe(stripeApiKey)}>
@@ -127,7 +118,6 @@ function App() {
           />
 
           <ProtectedRoute exact path='/order/:id' component={OrderDetails} />
-
 
           <ProtectedRoute exact path='/proccess/payment' component={Payment} />
 
@@ -189,15 +179,7 @@ function App() {
             isAdmin={true}
             component={ProductReviews}
           />
-
-          {/* <Route
-          component={
-            window.location.pathname === "/process/payment" ? null : NotFound
-          }
-        /> */}
         </Switch>
-
-        {/* <Footer /> */}
       </Router>
     </>
   );
